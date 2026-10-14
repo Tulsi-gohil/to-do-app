@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0c1612;
+  --color-moss: #143028;
+  --color-leaf: #1f4a3a;
+  --color-mint: #5fd4a4;
+  --color-foam: #e8f5ef;
+  --color-mist: #b7cfc4;
+  --color-sand: #f4ebe0;
+  --color-ember: #e07a4a;
+  --color-gold: #d4a24c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-foam);
+  background: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-mint) 40%, transparent);
+  color: white;
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-mint) 45%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 14px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.animate-float {
+  animation: float-soft 7s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.55s ease-out both;
+}
+
+.animate-fade-up-delay {
+  animation: fade-up 0.7s ease-out 0.12s both;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2.2s ease-out infinite;
+}
+
+.auth-grid {
+  background-image:
+    radial-gradient(circle at 18% 20%, color-mix(in oklab, var(--color-mint) 18%, transparent), transparent 42%),
+    radial-gradient(circle at 82% 12%, color-mix(in oklab, var(--color-ember) 14%, transparent), transparent 38%),
+    linear-gradient(160deg, #0b1410 0%, #12241d 45%, #0d1a15 100%);
+}
+
+.auth-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+}
+
+.input-field {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid color-mix(in oklab, var(--color-mist) 22%, transparent);
+  background: color-mix(in oklab, var(--color-ink) 55%, transparent);
+  color: var(--color-foam);
+  padding: 0.85rem 1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.input-field:focus {
+  border-color: color-mix(in oklab, var(--color-mint) 70%, white);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-mint) 22%, transparent);
+  background: color-mix(in oklab, var(--color-moss) 70%, transparent);
+}
+
+.input-field::placeholder {
+  color: color-mix(in oklab, var(--color-mist) 70%, transparent);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #5fd4a4 0%, #3aaf84 55%, #2f8f6c 100%);
+  color: #062018;
+  font-weight: 700;
+  padding: 0.9rem 1.25rem;
+  cursor: pointer;
+  transition: transform 0.18s ease, filter 0.18s ease, opacity 0.18s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid color-mix(in oklab, var(--color-mist) 28%, transparent);
+  color: var(--color-foam);
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s;
+}
+
+.btn-ghost:hover {
+  background: color-mix(in oklab, var(--color-leaf) 45%, transparent);
+  border-color: color-mix(in oklab, var(--color-mint) 40%, transparent);
+}
